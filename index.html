@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Friend UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .heart {
+            font-size: 24px;
+            color: #ff4d4d;
+        }
+        .person {
+            width: 100px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color:skyblue;
+            margin: 10% auto; /* 10% from the top and centered */
+            padding: 20px;
+            border: none;
+            width: 60%; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Modal message styles */
+        .modal-message {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #ce2d88;
+        }
+        #noBtn{
+            background-color:red;
+        }
+        #yesBtn{
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="buttonContainer">
+        <img class="person" src="./montiCartoonImg.jpg" alt="Person Image">
+        <h1>Will you be my best friend <span class="heart">❤️</span>?</h1>
+        
+        <div>
+            <button class="btn" id="yesBtn" onclick="openModal()">Yes</button>
+            <button class="btn" id="noBtn" onmouseenter="swapButtons()">No</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p class="modal-message">Your 'Yes' fills my heart with joy! Here's to a bond that lasts a lifetime. Let's be the best of friends forever!</p>
+        </div>
+    </div>
+
+    <script>
+        function swapButtons() {
+            const buttonContainer = document.getElementById("buttonContainer");
+            const yesBtn = document.getElementById("yesBtn");
+            const noBtn = document.getElementById("noBtn");
+
+            // Swap buttons after a delay of 500 milliseconds (half a second)
+            setTimeout(() => {
+                const temp = yesBtn.cloneNode(true);
+                yesBtn.replaceWith(noBtn.cloneNode(true));
+                noBtn.replaceWith(temp);
+            }, 500);
+        }
+
+        function openModal() {
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            // Display the modal
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            // Hide the modal
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
